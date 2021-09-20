@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
+import ReviewForm from './ReviewForm';
 import Reviews from './Reviews';
 
 function Product() {
@@ -34,6 +35,8 @@ function Product() {
             <div>
                 <h1>{item.title}</h1>
                 <h2>{item.body}</h2>
+
+                <ReviewForm />
 
                 {
                     item.reviews &&

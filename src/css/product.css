@@ -8,7 +8,7 @@ textarea {
 }
 
 /* This modal code from https://codepen.io/nbalaguer/pen/PVbEjm */
-#modal-root {
+#modalRoot {
 position: fixed;
 overflow: hidden;
 background-color: rgba(0, 0, 0, 0.4);
@@ -20,7 +20,7 @@ opacity: 0;
 transition: opacity 0.15s ease-out, width 0s linear 0.15s, height 0s linear 0.15s;
 }
 
-#modal-root.visible {
+#modalRoot.visible {
 width: 100%;
 height: 100%;
 opacity: 1;
