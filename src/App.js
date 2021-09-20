@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import './css/classless-tiny.css';
+import Product from './components/Product';
+import ProductList from './components/ProductList';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+
+        <Route path="/product/:key">
+          <Product />
+        </Route>
+
+        <Route path="/">
+          <h1>Product List</h1>
+          <ProductList />
+        </Route>
+
+      </Switch>
+    </Router>
   );
 }
 
