@@ -27,13 +27,17 @@ function ReviewForm({ productKey }) {
         })
             .then(response => response.json())
             .then(function (data) {
-                socket.emit('newreview', {
+                const dataToEmit = {
                     'star_count': choosenStarCount,
                     'review': reviewText,
                     'room': `room-${productKey}`
-                });
-                window.location.reload();
-            })
+                }
+
+                socket.emit('newreview', dataToEmit, 
+                    (response) => {
+                        window.location.reload()
+                    })
+                })
             .catch(err => console.log(err))
     }
 
