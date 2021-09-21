@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
+import { endpoint } from '../utils/API'
 
 function ProductList() {
     const [error, setError] = useState(null);
@@ -7,7 +8,7 @@ function ProductList() {
     const [items, setItems] = useState([]);
 
     useEffect(() => {
-        fetch("https://fakerating.deta.dev/products")
+        fetch(`${endpoint}/products`)
             .then(res => res.json())
             .then(
                 (result) => {

@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import ReviewForm from './ReviewForm';
 import Reviews from './Reviews';
+import { endpoint } from '../utils/API'
 
 function Product() {
+
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [item, setItem] = useState({});
@@ -12,12 +14,12 @@ function Product() {
 
     //Load product data
     useEffect(() => {
-        fetch(`https://fakerating.deta.dev/products/${key}`)
+        fetch(`${endpoint}/products/${key}`)
             .then(res => res.json())
             .then(
                 (result) => {
-                    setIsLoaded(true);
                     setItem(result);
+                    setIsLoaded(true);
                 },
                 (error) => {
                     setIsLoaded(true);
@@ -25,6 +27,8 @@ function Product() {
                 }
             )
     }, [key])
+
+
 
     if (error) {
         return <div>Error: {error.message}</div>;
@@ -40,7 +44,7 @@ function Product() {
 
                 {
                     item.reviews &&
-                        <Reviews reviewLists={item.reviews} />
+                    <Reviews reviewLists={item.reviews} productKey={key} />
                 }
                 
                 

@@ -1,8 +1,13 @@
 import '../css/product.css';
 import { useState } from 'react'
 import RatingStar from './RatingStar';
+import {endpoint} from '../utils/API'
 
-function ReviewForm({productKey}) {
+const io = require("socket.io-client");
+
+function ReviewForm({ productKey }) {
+    const socket = io(endpoint);
+
     const [reviewText, setReviewText] = useState('');
     const [choosenStarCount, setChoosenStarCount] = useState(0);
     
@@ -12,7 +17,7 @@ function ReviewForm({productKey}) {
             'review': reviewText
         }
 
-        fetch(`https://fakerating.deta.dev/reviews/${productKey}`, {
+        fetch(`${endpoint}/reviews/${productKey}`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -22,7 +27,13 @@ function ReviewForm({productKey}) {
             .then(response => response.json())
             .then(function (data) {
                 console.log(data)
-                window.location.reload();
+
+                socket.emit('newreview', {
+                    'star_count': choosenStarCount,
+                    'review': reviewText,
+                    'room': `room-${productKey}`
+                });
+                //window.location.reload();
             })
             .catch(err => console.log(err))
     }

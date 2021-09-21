@@ -1,12 +1,17 @@
 import '../css/product.css';
 import { useState, useEffect } from 'react'
 import RatingStar from './RatingStar';
+import { endpoint } from '../utils/API'
 
-function Reviews({reviewLists}) {
-    const [items] = useState(reviewLists)
+function Reviews({reviewLists, productKey}) {
+    const [items, setItems] = useState(reviewLists)
     const [currentRating, setCurrentRating] = useState(0);
     const [currentStar, setCurrentStar] = useState(0);
     const [ready, setReady] = useState(false);
+
+
+    const io = require("socket.io-client");
+    const socket = io(endpoint);
 
     useEffect(() => {
         let total = 0
@@ -19,6 +24,16 @@ function Reviews({reviewLists}) {
         setCurrentStar(Math.ceil(avg_star))
         setReady(true)
     }, [items])
+
+
+    //Subscribe to socket room
+    useEffect(() => {
+        socket.emit('join', `room-${productKey}`)
+        
+        socket.on('newreview', (data) => {
+            setItems(oldReviews => [...oldReviews, data])
+        })
+    }, [socket, productKey, items])
 
     return (
         <div>
