@@ -34,7 +34,9 @@ function ReviewForm() {
                 <div className="modal" onClick={modalClick}>
                     <h3>What's your rating?</h3>
                     <p>Rating</p>
-                    <div id="ratingstar-submission"></div>
+                    <div id="ratingstar-submission">
+                        <RatingStar hoverable={true} />
+                    </div>
 
                     <p>Review</p>
                     <textarea placeholder="start typing.." id="review_textarea" cols="30" rows="2"></textarea>
