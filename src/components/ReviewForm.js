@@ -2,12 +2,9 @@ import '../css/product.css';
 import { useState } from 'react'
 import RatingStar from './RatingStar';
 import {endpoint} from '../utils/API'
-
-const io = require("socket.io-client");
+import { socket } from '../utils/SocketIO';
 
 function ReviewForm({ productKey }) {
-    const socket = io(endpoint);
-
     const [reviewText, setReviewText] = useState('');
     const [choosenStarCount, setChoosenStarCount] = useState(0);
     

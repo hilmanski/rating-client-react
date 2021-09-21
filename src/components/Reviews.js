@@ -1,17 +1,13 @@
 import '../css/product.css';
 import { useState, useEffect } from 'react'
 import RatingStar from './RatingStar';
-import { endpoint } from '../utils/API'
+import { socket } from '../utils/SocketIO';
 
 function Reviews({reviewLists, productKey}) {
     const [items, setItems] = useState(reviewLists)
     const [currentRating, setCurrentRating] = useState(0);
     const [currentStar, setCurrentStar] = useState(0);
     const [ready, setReady] = useState(false);
-
-
-    const io = require("socket.io-client");
-    const socket = io(endpoint);
 
     useEffect(() => {
         let total = 0
@@ -34,7 +30,7 @@ function Reviews({reviewLists, productKey}) {
             data.star_count = data.star_count / 2
             setItems(oldReviews => [...oldReviews, data])
         })
-    }, [socket, productKey, items])
+    }, [productKey, items])
 
     return (
         <div>

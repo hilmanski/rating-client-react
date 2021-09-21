@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 function RatingStar({ totalActive, hoverable = false, stateStarUpdate}) {
     const [totalHighlight, setTotalHighlight] = useState(totalActive * 2);
