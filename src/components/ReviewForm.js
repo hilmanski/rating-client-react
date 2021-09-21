@@ -17,6 +17,7 @@ function ReviewForm({ productKey }) {
             'review': reviewText
         }
 
+        document.getElementsByClassName('modal')[0].innerHTML = 'Submit Review...'
         fetch(`${endpoint}/reviews/${productKey}`, {
             method: 'POST',
             headers: {
@@ -26,8 +27,6 @@ function ReviewForm({ productKey }) {
         })
             .then(response => response.json())
             .then(function (data) {
-                console.log(data)
-
                 socket.emit('newreview', {
                     'star_count': choosenStarCount,
                     'review': reviewText,
