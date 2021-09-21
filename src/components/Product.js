@@ -36,7 +36,7 @@ function Product() {
                 <h1>{item.title}</h1>
                 <h2>{item.body}</h2>
 
-                <ReviewForm />
+                <ReviewForm productKey={key} />
 
                 {
                     item.reviews &&

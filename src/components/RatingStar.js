@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 
-function RatingStar({totalActive, hoverable=false}) {
+function RatingStar({ totalActive, hoverable = false, stateStarUpdate}) {
     const [totalHighlight, setTotalHighlight] = useState(totalActive);
+
 
     function highlightStar(index) {
         setTotalHighlight(index + 1)
+        stateStarUpdate(index + 1)
     }
 
     return (
