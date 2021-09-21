@@ -43,7 +43,7 @@ function Product() {
                 <ReviewForm productKey={key} />
 
                 {
-                    item.reviews &&
+                    item.reviews.length > 0 &&
                     <Reviews reviewLists={item.reviews} productKey={key} />
                 }
                 

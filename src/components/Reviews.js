@@ -11,6 +11,7 @@ function Reviews({reviewLists, productKey}) {
 
     useEffect(() => {
         let total = 0
+
         items.forEach((item) =>
             total += item.star_count
         )
@@ -48,15 +49,15 @@ function Reviews({reviewLists, productKey}) {
             <br />
 
             <p>Reviews</p>
-            
-            {
+            { 
                 items.map((item, index) => (
                     <div key={index}>
-                        <p><RatingStar totalActive={item.star_count} /> - 
-                        <b>{item.star_count}</b> {item.review}</p>
+                        <p><RatingStar totalActive={item.star_count} /> -
+                            <b>{item.star_count}</b> {item.review}</p>
                     </div>
                 ))
             }
+
         </div>
     )
 }
