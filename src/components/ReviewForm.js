@@ -13,7 +13,7 @@ function ReviewForm({ productKey }) {
     
     function submitReview() {
         const newReview = {
-            'star_count': choosenStarCount,
+            'star_count': choosenStarCount / 2, //allow half
             'review': reviewText
         }
 
@@ -33,7 +33,7 @@ function ReviewForm({ productKey }) {
                     'review': reviewText,
                     'room': `room-${productKey}`
                 });
-                //window.location.reload();
+                window.location.reload();
             })
             .catch(err => console.log(err))
     }

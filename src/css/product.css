@@ -9,6 +9,7 @@ textarea {
 
 /* This modal code from https://codepen.io/nbalaguer/pen/PVbEjm */
 #modalRoot {
+z-index: 99;
 position: fixed;
 overflow: hidden;
 background-color: rgba(0, 0, 0, 0.4);

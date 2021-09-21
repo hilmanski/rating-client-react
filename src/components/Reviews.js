@@ -31,6 +31,7 @@ function Reviews({reviewLists, productKey}) {
         socket.emit('join', `room-${productKey}`)
         
         socket.on('newreview', (data) => {
+            data.star_count = data.star_count / 2
             setItems(oldReviews => [...oldReviews, data])
         })
     }, [socket, productKey, items])

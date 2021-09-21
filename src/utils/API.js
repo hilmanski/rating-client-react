@@ -1,1 +1,1 @@
-export const endpoint = 'http://localhost:5000'
+export const endpoint = 'http://fakerating.us-3.evennode.com' //http://localhost:5000'
